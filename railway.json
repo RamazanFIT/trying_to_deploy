@@ -1,14 +1,15 @@
 {
-    "name": "MVP-Project-z00help",
-    "services": [
-      {
-        "type": "docker",
-        "image": "my-django-app:latest",
-        "env": {
-          "SECRET_KEY": "django-insecure-)7id7-%s&6x#dt@g6^ea$!t_+89!^==*8vn$1^^cie#_q@)cbs",
-          "DEBUG": "False"
-      
-        }
-      }
-    ]
-  }
+    "$schema": "https://railway.app/railway.schema.json",
+    "build": {
+        "builder": "DOCKERFILE",
+        "watchPatterns": [
+            "/app/*.py",
+            "/app/**/*.py",
+            "/Dockerfile",
+            "/pyproject.toml"
+        ]
+    },
+    "deploy": {
+        "restartPolicyType": "ON_FAILURE"
+    }
+}
