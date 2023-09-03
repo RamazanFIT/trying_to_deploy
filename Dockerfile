@@ -8,7 +8,7 @@ RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
 
 FROM python:3.11
 
-WORKDIR /code
+WORKDIR /MVP-Project-z00help
 COPY --from=requirements-stage /tmp/requirements.txt .
 RUN pip install --no-cache-dir --upgrade -r ./requirements.txt
 COPY . .
