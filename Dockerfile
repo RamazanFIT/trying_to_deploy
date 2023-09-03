@@ -1,21 +1,21 @@
-
-FROM python:3.8
-
-ENV PYTHONUNBUFFERED 1
+FROM python:latest
 
 
-RUN curl -sSL https://install.python-poetry.org | sh
-RUN python -m venv /opt/venv
-ENV PATH="/opt/venv/bin:$PATH"
-COPY pyproject.toml /
-RUN poetry config virtualenvs.create false && poetry install --no-root
+
+WORKDIR /app 
+
+COPY . .
+
+RUN pip install poetry 
 
 
-RUN mkdir /app
-WORKDIR /app
+WORKDIR /app/MVP-Project-z00help
 
 
-COPY . /app/
+RUN poetry install
 
 
-CMD ["poetry", "run", "python", "manage.py", "runserver", "0.0.0.0:8000"]
+
+
+
+CMD ["poetry", "run", "python", "manage.py", "runserver", "0.0.0.0:2000"]
