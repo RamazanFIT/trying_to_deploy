@@ -18,4 +18,4 @@ RUN poetry install
 
 
 
-CMD ["poetry", "run", "python", "manage.py", "runserver", "0.0.0.0:2000"]
+ENTRYPOINT ["sh", "./scripts/launch.sh"]
